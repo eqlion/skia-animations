@@ -16,9 +16,16 @@ type CounterBlockProps = {
   fontSize: number
   /** The max value, non-inclusive. For example, if value is in [0, 1000], then maxNumber = 1001 */
   maxNumber?: number
+  shouldStagger?: boolean
 }
 
-const CounterBlock: React.FC<CounterBlockProps> = ({ value, color, fontSize, maxNumber }) => {
+const CounterBlock: React.FC<CounterBlockProps> = ({
+  value,
+  color,
+  fontSize,
+  maxNumber,
+  shouldStagger,
+}) => {
   const digits = String(value).split('').map(Number)
   const fixedDigits = [
     ...Array.from(
@@ -31,7 +38,13 @@ const CounterBlock: React.FC<CounterBlockProps> = ({ value, color, fontSize, max
   return (
     <View style={styles.container}>
       {fixedDigits.map((digit, index) => (
-        <CounterElement value={digit} key={index} color={color} fontSize={fontSize} />
+        <CounterElement
+          value={digit}
+          key={index}
+          color={color}
+          fontSize={fontSize}
+          index={shouldStagger ? index : undefined}
+        />
       ))}
     </View>
   )

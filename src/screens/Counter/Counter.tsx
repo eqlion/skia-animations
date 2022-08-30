@@ -9,12 +9,12 @@ const styles = StyleSheet.create({
 })
 
 const Counter: React.FC = () => {
-  const [state, setState] = React.useState(100)
+  const [state, setState] = React.useState(0)
   const handlePress = React.useCallback(() => {
-    const nextNumber = Math.floor(Math.random() * 100000)
-    LayoutAnimation.configureNext(
-      LayoutAnimation.create(50, LayoutAnimation.Types.linear, LayoutAnimation.Properties.opacity)
-    )
+    const nextNumber = Math.floor(Math.random() * 10000000)
+    // LayoutAnimation.configureNext(
+    //   LayoutAnimation.create(50, LayoutAnimation.Types.linear, LayoutAnimation.Properties.opacity)
+    // )
     setState(nextNumber)
   }, [])
 
@@ -22,7 +22,7 @@ const Counter: React.FC = () => {
     <>
       <SafeAreaView style={styles.screen}>
         <View style={styles.counterContainer}>
-          <CounterBlock value={state} color={'#f99'} fontSize={60} maxNumber={99999} />
+          <CounterBlock value={state} color={'#000'} fontSize={60} maxNumber={9999999} />
         </View>
         <Button title="Press" onPress={handlePress} />
       </SafeAreaView>
