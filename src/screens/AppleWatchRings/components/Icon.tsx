@@ -1,11 +1,11 @@
 import {
+  Extrapolate,
   FitBox,
+  interpolate,
   Path,
   rect,
-  runTiming,
   SkiaValue,
-  useValue,
-  useValueEffect,
+  useComputedValue,
 } from '@shopify/react-native-skia'
 import React from 'react'
 import { useWindowDimensions } from 'react-native'
@@ -25,11 +25,10 @@ const Icon: React.FC<IconProps> = ({ type, radius, progress }) => {
 
   const src = rect(0, 0, ICON_SIZE, ICON_SIZE)
 
-  const opacity = useValue(0)
-
-  useValueEffect(progress, () => {
-    runTiming(opacity, progress.current === 0 ? 0 : 1, { duration: 50 })
-  })
+  const opacity = useComputedValue(
+    () => interpolate(progress.current, [0, 10], [0, 1], Extrapolate.CLAMP),
+    [progress]
+  )
 
   switch (type) {
     case EIcon.DoubleRight: {
