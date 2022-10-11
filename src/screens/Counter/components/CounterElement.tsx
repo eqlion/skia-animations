@@ -14,7 +14,7 @@ type CounterElementProps = {
   value?: number
   color?: Color
   fontSize: number
-  /** If index is supplied, the animation will be staggered*/
+  /** If index is supplied, the animation will be staggered */
   index?: number
 }
 
@@ -28,13 +28,12 @@ const CounterElement: React.FC<CounterElementProps> = ({
 }) => {
   const font = useFont(require('@Assets/fonts/Roboto-ThinItalic.ttf'), fontSize)
   const y = useValue(0)
-  const y2 = useValue(0)
 
   React.useEffect(() => {
     const normalizedValue = value !== undefined ? value + 1 : 0
     if (index !== undefined) {
       setTimeout(() => {
-        runSpring(y2, -normalizedValue * fontSize - fontSize / 6, {
+        runSpring(y, -normalizedValue * fontSize - fontSize / 6, {
           mass: 1,
           stiffness: 200,
           damping: 17,
@@ -43,7 +42,7 @@ const CounterElement: React.FC<CounterElementProps> = ({
     } else {
       runTiming(y, -normalizedValue * fontSize - fontSize / 6, { duration: 350 })
     }
-  }, [value, index, fontSize, y, y2])
+  }, [value, index, fontSize, y])
 
   if (!font) {
     return null
@@ -53,7 +52,7 @@ const CounterElement: React.FC<CounterElementProps> = ({
 
   return (
     <Canvas style={{ width: glyphWidth, height: fontSize }}>
-      <Glyphs font={font} glyphs={glyphs} x={0} y={y2} color={color} />
+      <Glyphs font={font} glyphs={glyphs} x={0} y={y} color={color} />
     </Canvas>
   )
 }
