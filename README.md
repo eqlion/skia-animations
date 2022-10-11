@@ -38,3 +38,4 @@ yarn [ios|android]
 
 - [Simple wave animation](https://github.com/eqlion/skia-animations/tree/main/src/screens/Wave)
 - [Counter animation](https://github.com/eqlion/skia-animations/tree/main/src/screens/Counter) ([inspiration](https://twitter.com/mironcatalin/status/1441127857745534981))
+- [Apple activity rings](https://github.com/eqlion/skia-animations/tree/main/src/screens/AppleWatchRings)
