@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
 const emojiMap: Record<ScreensWithoutMain, string> = {
   [EScreens.Counter]: '🔢',
   [EScreens.Wave]: '🌊',
+  [EScreens.AppleWatchRings]: '🍏',
 }
 
 type ScreenRowProps = { screen: ScreensWithoutMain }
