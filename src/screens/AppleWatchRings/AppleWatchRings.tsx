@@ -18,7 +18,7 @@ const AppleWatchRings: React.FC = () => {
 
   const handlePress = () => {
     progresses.forEach((progress) => {
-      const newValue = progress.current === 0 ? Math.random() * MAX_ANGLE : 0
+      const newValue = progress.current === 0 ? Math.random() * (MAX_ANGLE - 20) + 20 : 0
       const duration = (Math.abs(progress.current - newValue) * ANIMATION_DURATION) / MAX_ANGLE
 
       runTiming(progress, newValue, {
