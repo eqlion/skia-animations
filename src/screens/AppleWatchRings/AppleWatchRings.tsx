@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Button } from 'react-native'
+import { StyleSheet, View, Button, StatusBar } from 'react-native'
 import { Canvas, runTiming } from '@shopify/react-native-skia'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { GoBackButton } from '../../components'
@@ -29,6 +29,7 @@ const AppleWatchRings: React.FC = () => {
 
   return (
     <>
+      <StatusBar animated barStyle="light-content" />
       <View style={styles.f1}>
         <Canvas style={styles.f1}>
           {radii.map((radius, index) => (
